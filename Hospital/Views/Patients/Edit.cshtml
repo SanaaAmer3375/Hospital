@@ -1,0 +1,72 @@
+﻿@model Patient
+<h1 style="text-align:center; font-family: 'Arial', sans-serif;">Edit Patient</h1>
+
+<div class="row">
+	<div class = "col-6">
+<form method="post" asp-controller="Patients" asp-action="EditCurrent" class="col-6" enctype="multipart/form-data">
+	<input type="hidden" asp-for="Id"/>
+
+	<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+	<div class="mt-3">
+		<label asp-for="FullName" class="form-lable"></label>
+		<input type="text" asp-for="FullName" class="form-control"/>
+		<span asp-validation-for="FullName" class="text-danger"></span>
+		</div>
+
+		<div class="mt-3">
+		<label asp-for="NationalId" class="form-lable"></label>
+		<input type="text" asp-for="NationalId" class="form-control"/>
+		<span asp-validation-for="NationalId" class="text-danger"></span>
+		</div>
+
+		<div class="mt-3">
+		<label asp-for="Address"class="form-lable"></label>
+		<input type="text" asp-for="Address" class="form-control"/>
+		<span asp-validation-for="Address" class="text-danger"></span>
+		</div>
+
+
+		<div class="mt-3">
+		<label asp-for="DateOfEntry" class="form-lable"></label>
+		<input asp-for="DateOfEntry" class="form-control"/>
+		<span asp-validation-for="DateOfEntry" class="text-danger"></span>
+		</div>
+
+		<div class="mt-3">
+		<label asp-for="BirthDate" class="form-lable"></label>
+		<input asp-for="BirthDate" class="form-control"/>
+		<span asp-validation-for="BirthDate" class="text-danger"></span>
+		</div>
+
+		<div class="mt-3">
+		<label asp-for="PhoneNumber" class="form-lable"></label>
+		<input asp-for="PhoneNumber" class="form-control"/>
+		<span asp-validation-for="PhoneNumber" class="text-danger"></span>
+		</div>
+
+		<div class="mt-3">
+		<label asp-for="Comments" class="form-lable"></label>
+		<input asp-for="Comments" class="form-control"/>
+		</div>
+
+		<div class="mt-3">
+		<label asp-for="DoctorId"class="form-lable"></label>
+
+		<select class = "form-control"
+				asp-for="DoctorId"
+				asp-items="@(new SelectList(ViewBag.AllDoctors,"Id", "FullName"))">
+				<option selected disabled value="0">Select a Doctor...</option>
+		</select>
+				<span asp-validation-for = "DoctorId" class = "text-danger"></span>
+		</div class="mt-3">
+<div>
+	<button type="submit" class="btn btn-primary col-12 mt-3">Edit</button>
+	<a asp-controller="Patients" asp-action="GetIndexView" class="d-block mt-2">Back to List</a>
+</div>
+
+
+</form>
+<div style="height: 200px;"></div>
+

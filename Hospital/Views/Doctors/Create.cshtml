@@ -1,0 +1,65 @@
+﻿@model Doctor
+
+<h1 style="text-align:center; font-family: 'Arial', sans-serif;">Create Doctor</h1>
+
+<div class="row">
+    <div class="col-6">
+        <form method="post" asp-controller="Doctors" asp-action="AddNew" class="col-6" enctype="multipart/form-data">
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <div class="mt-3">
+                <label asp-for="FullName" class="form-label"></label>
+                <input type="text" asp-for="FullName" class="form-control" />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+
+            <div class="mt-3">
+                <label asp-for="NationalId" class="form-label"></label>
+                <input type="text" asp-for="NationalId" class="form-control" />
+                <span asp-validation-for="NationalId" class="text-danger"></span>
+            </div>
+
+            <div class="mt-3">
+                <label asp-for="Address" class="form-label"></label>
+                <input type="text" asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+
+            <div class="mt-3">
+                <label asp-for="AttendanceTime" class="form-label"></label>
+                <input asp-for="AttendanceTime" class="form-control" />
+                <span asp-validation-for="AttendanceTime" class="text-danger"></span>
+            </div>
+
+            <div class="mt-3">
+                <label asp-for="PhoneNumber" class="form-label"></label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+
+            <div class="mt-3">
+                <label asp-for="ImageFile" class="form-label"></label>
+                <input type="file" name="imageFile" id="imageFile" accept=".png,.jpg" class="form-control" onchange="AddImage()" />
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary col-12 mt-3">Add</button>
+                <a asp-controller="Patients" asp-action="GetIndexView" class="d-block mt-2">Back to List</a>
+            </div>
+        </form>
+    </div>
+
+    <div class="col-6">
+        <img src="" id="empImage" style="width:100%; max-width:200px; aspect-ratio:1/1; margin-top: 20px;" class="card" />   
+    </div>
+</div>
+
+<div style="height: 200px;"></div>
+
+@section Scripts {
+            <script>
+                function AddImage() {
+                    document.getElementById("empImage").src = window.URL.createObjectURL(document.getElementById("imageFile").files[0]);
+                }
+            </script>
+}

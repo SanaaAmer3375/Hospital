@@ -1,0 +1,35 @@
+﻿@model Patient
+@using System.Globalization
+
+<h1 style="text-align:center; font-family: 'Arial', sans-serif;">
+    Patient Details
+</h1>
+
+<div style="display: flex; flex-direction: row;">
+    <div style="flex: 1;">
+        <dl class="row">
+            <dt class="col-2">@Html.DisplayNameFor(emp => emp.Id)</dt>
+            <dd class="col-10">@Model.Id </dd>
+            <dt class="col-2">@Html.DisplayNameFor(emp => emp.FullName)</dt>
+            <dd class="col-10">@Model.FullName </dd>
+            <dt class="col-2">@Html.DisplayNameFor(emp => emp.NationalId)</dt>
+            <dd class="col-10">@Model.NationalId </dd>
+            <dt class="col-2">@Html.DisplayNameFor(emp => emp.Address)</dt>
+            <dd class="col-10">@Model.Address </dd>
+            <dt class="col-2">@Html.DisplayNameFor(emp => emp.BirthDate)</dt>
+            <dd class="col-10">@Model.BirthDate.ToString("d", CultureInfo.InvariantCulture)</dd>
+            <dt class="col-2">@Html.DisplayNameFor(emp => emp.PhoneNumber)</dt>
+            <dd class="col-10">@Model.PhoneNumber</dd>
+            <dt class="col-2">Doctor</dt>
+            <dd class="col-10">@Model.Doctor.FullName</dd>
+            <dt class="col-2">@Html.DisplayNameFor(emp => emp.Comments)</dt>
+            <dd class="col-10">@Model.Comments<dd> 
+
+        </dl>
+    </div>
+</div>
+
+<a asp-controller="Patients" asp-action="GetIndexView">Back to List</a>
+
+<div style="height: 200px;"></div>
+

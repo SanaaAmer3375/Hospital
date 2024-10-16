@@ -1,0 +1,47 @@
+﻿@model Doctor
+@using System.Globalization
+
+<h1 style="text-align:center; font-family: 'Arial', sans-serif;">
+    Doctor Details
+</h1>
+
+<div style="display: flex; flex-direction: row;">
+    <div style="flex: 1;">
+        <dl class="row">
+            <dt class="col-2">@Html.DisplayNameFor(emp => emp.Id)</dt>
+            <dd class="col-10">@Model.Id</dd>
+            <dt class="col-2">@Html.DisplayNameFor(emp => emp.FullName)</dt>
+            <dd class="col-10">@Model.FullName</dd>
+            <dt class="col-2">@Html.DisplayNameFor(emp => emp.AttendanceTime)</dt>
+            <dd class="col-10">@Model.AttendanceTime</dd>
+            <dt class="col-2">@Html.DisplayNameFor(emp => emp.NationalId)</dt>
+            <dd class="col-10">@Model.NationalId</dd>
+            <dt class="col-2">@Html.DisplayNameFor(emp => emp.PhoneNumber)</dt>
+            <dd class="col-10">@Model.PhoneNumber</dd>
+            <dt class="col-2">@Html.DisplayNameFor(emp => emp.Address)</dt>
+            <dd class="col-10">@Model.Address</dd>
+        </dl>
+
+        @if (Model.Patients.Count() > 0)
+        {
+                    <ul class="list-group text-center col-4">
+                        <li class="list-group-item active border">Patients</li>
+                @foreach (var patient in Model.Patients)
+                {
+                                    <li class="list-group-item list-group-item-action">@patient.FullName</li>
+                }
+                    </ul>
+        }
+        else
+        {
+                    <h1 class="alert alert-danger text-center col-4" style="color: darkred">There are no Patients.</h1>
+        }
+    </div>
+
+    <div style="flex: 0 0 20rem;">
+        <img src="@Model.ImagePath" style="width: 100%;" alt="Doctor Image"/>
+    </div>
+</div>
+
+<a asp-controller="Patients" asp-action="GetIndexView">Back to List</a>
+<div style="height: 200px;"></div>
